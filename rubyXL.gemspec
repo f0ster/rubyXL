@@ -494,7 +494,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<ruby-prof>, [">= 0"])
     else
       s.add_dependency(%q<nokogiri>, [">= 1.4.4"])
-      s.add_dependency(%q<rubyzip>, [">= 1.1.6"])
+      # s.add_dependency(%q<rubyzip>, [">= 1.1.6"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
