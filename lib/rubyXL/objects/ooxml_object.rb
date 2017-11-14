@@ -107,7 +107,7 @@ module RubyXL
 
     def parse(node, known_namespaces = nil)
       case node
-      when String, IO, Zip::InputStream then node = Nokogiri::XML.parse(node)
+      when String, IO, RubyZip::InputStream then node = Nokogiri::XML.parse(node)
       end
 
       if node.is_a?(Nokogiri::XML::Document) then
@@ -432,7 +432,7 @@ module RubyXL
 
     # Generates the top-level OOXML object by parsing its XML file from the contents of the <tt>.xslx</tt> container.
     # === Parameters
-    # * +zip_file+ - <tt>.xslx</tt> file as <tt>Zip::File</tt> object
+    # * +zip_file+ - <tt>.xslx</tt> file as <tt>RubyZip::File</tt> object
     # * +file_path+ - path to the subject file inside the <tt>.xslx</tt> zip archive
     def self.parse_file(zip_file, file_path)
       entry = zip_file.find_entry(RubyXL::from_root(file_path))
@@ -442,7 +442,7 @@ module RubyXL
 
     # Saves the contents of the object as XML to respective location in <tt>.xslx</tt> zip container.
     # === Parameters
-    # * +zipfile+ - ::Zip::File to which the resulting XNMML should be added.
+    # * +zipfile+ - ::RubyZip::File to which the resulting XNMML should be added.
     def add_to_zip(zip_stream)
       xml_string = write_xml
       return false if xml_string.empty?

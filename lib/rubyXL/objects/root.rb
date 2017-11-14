@@ -1,4 +1,4 @@
-require 'zip'
+require 'rubyzip'
 require 'rubyXL/objects/relationships'
 require 'rubyXL/objects/document_properties'
 require 'rubyXL/objects/content_types'
@@ -34,7 +34,7 @@ module RubyXL
 
     # Write <tt>.xlsx</tt> to a stream (useful for sending over HTTP)
     def stream
-      stream = Zip::OutputStream.write_buffer { |zipstream|
+      stream = RubyZip::OutputStream.write_buffer { |zipstream|
         self.rels_hash = {}
         self.relationship_container.owner = self
         collect_related_objects.compact.each { |obj|
